@@ -1,2 +1,2 @@
 # StatusBar 
-! [statusbar](/screenshot/picture.jpg) 
+![statusbar](/screenshot/picture.jpg) 
