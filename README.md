@@ -32,5 +32,5 @@ Este proyecto utiliza un archivo Makefile para compilar y gestionar el proceso d
    Limpiar los archivos generados por la compilación: 
    make clean  
    ```
-
+3. El statusbar va dirigido para usuarios que usen Dwm. 
 
