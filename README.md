@@ -32,5 +32,13 @@ Este proyecto utiliza un archivo Makefile para compilar y gestionar el proceso d
    Limpiar los archivos generados por la compilación: 
    make clean  
    ```
-3. El statusbar va dirigido para usuarios que usen Dwm. 
+3. ## Statusbar para dwm
+
+Este proyecto proporciona un statusbar personalizado diseñado para funcionar con el gestor de ventanas [dwm](https://dwm.suckless.org/). La statusbar muestra información relevante, como la hora actual, directamente en tu barra de estado de dwm.
+
+Con estos pasos, podrá compilar, instalar y desinstalar el proyecto fácilmente utilizando el Makefile proporcionado.
+
+### Requisitos
+
+- [dwm](https://dwm.suckless.org/): Asegúrese de tener dwm instalado en su sistema antes de utilizar este statusbar.
 
