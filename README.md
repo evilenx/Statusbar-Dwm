@@ -16,20 +16,26 @@ Este proyecto utiliza un archivo Makefile para compilar y gestionar el proceso d
    ```bash
    git clone https://github.com/evilenx/Statusbar.Dwm.git
    cd Statusbar-Dwm
-   
-   Para compilar la Statusbar:
+   ```
+Para compilar la Statusbar:
 
+   ```bash
    make build
+   ```
    
    Para instalar el ejecutable en su sistema, utilce el comando (puede requerir permisos de administrador):
 
+   ```bash
    make install 
+   ```
 
    Para desinstalar el ejecutable en su sistema, utilizar el comando: 
+   ```bash
    make uninstall 
-
+   ```
 
    Limpiar los archivos generados por la compilación: 
+   ```bash
    make clean  
    ```
 ## Statusbar para dwm
