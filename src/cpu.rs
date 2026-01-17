@@ -15,7 +15,7 @@ pub fn monitor(data: Arc<Mutex<CpuData>>) {
         thread::sleep(Duration::from_millis(100));
         sys.refresh_cpu();
         
-        let usage = format!("CPU: {:.0}%", sys.global_processor_info().cpu_usage());
+        let usage = format!("CPU: {:.04}%", sys.global_processor_info().cpu_usage());
         *data.lock().unwrap() = CpuData{usage};
 				std::thread::sleep(Duration::from_nanos((1e9 / 144.) as u64));
     }
