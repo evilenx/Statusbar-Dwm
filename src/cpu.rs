@@ -1,22 +1,31 @@
 use std::sync::{Arc, Mutex};
 use std::thread;
-use std::time::Duration;
+use std::time::{Duration, Instant};
 use sysinfo::{System, SystemExt, ProcessorExt};
-
-
+ 
 pub struct CpuData {
-    pub usage: String
+    pub usage: String,
 }
-
+ 
 pub fn monitor(data: Arc<Mutex<CpuData>>) {
     let mut sys = System::new_all();
+    let target_period = Duration::from_millis(500);
+ 
+    // Primer refresh para inicializar contadores
+    sys.refresh_cpu();
+    thread::sleep(Duration::from_millis(100));
+ 
     loop {
+        let now = Instant::now();
+ 
         sys.refresh_cpu();
-        thread::sleep(Duration::from_millis(100));
-        sys.refresh_cpu();
-        
-        let usage = format!("CPU: {:.04}%", sys.global_processor_info().cpu_usage());
-        *data.lock().unwrap() = CpuData{usage};
-				std::thread::sleep(Duration::from_nanos((1e9 / 144.) as u64));
+        let usage = format!("CPU: {:.1}%", sys.global_processor_info().cpu_usage());
+        *data.lock().unwrap() = CpuData { usage };
+ 
+        let elapsed = now.elapsed();
+        if elapsed < target_period {
+            thread::sleep(target_period - elapsed);
+        }
     }
 }
+ 
