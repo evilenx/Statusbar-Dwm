@@ -1,50 +1,44 @@
-# StatusBar 
-![statusbar](/screenshot/picture.jpg) 
+# Statusbar-Dwm
 
-   StatusBar que imprime la hora en formato de hora, minutos, segundos y nanosegundos. 
+![statusbar](/screenshot/picture.jpg)
 
+Statusbar for [dwm](https://dwm.suckless.org/). Displays time, battery, RAM, CPU, and volume.
 
+## Dependencies
 
-## Instrucciones para Usar el Makefile
+- Rust / Cargo
+- `pactl` (pulseaudio-utils)
+- `gtk4`, `libpulse` (for volume-mixer)
 
-Este proyecto utiliza un archivo Makefile para compilar y gestionar el proceso de construcción. Siga estos pasos para compilar y utilizar el proyecto:
+## Install
 
-1. Asegúrese de que Rust y Cargo estén instalados en su sistema. Puede instalarlos desde [rustup](https://rustup.rs/).
+```sh
+git clone https://github.com/evilenx/Statusbar-Dwm.git
+cd Statusbar-Dwm
+make install
+```
 
-2. Clone este repositorio de GitHub en su máquina:
+## Volume Mixer
 
-   ```bash
-   git clone https://github.com/evilenx/Statusbar.Dwm.git
-   cd Statusbar-Dwm
-   ```
-3. Para compilar la Statusbar:
+Minimal per-app volume widget. Replaces pavucontrol.
 
-   ```bash
-   make build
-   ```
+```sh
+cd volume-mixer
+cargo build --release
+sudo cp target/release/volume-mixer /usr/local/bin/
+```
 
-4. Para instalar el ejecutable en su sistema, utilce el comando (puede requerir permisos de administrador):
+Bind click on statusbar in `config.h`:
 
-      ```bash
-      make install 
-      ```
+```c
+{ ClkStatusText, 0, Button1, spawn, SHCMD("vol-toggle.sh") },
+```
 
-Para desinstalar el ejecutable en su sistema, utilizar el comando: 
-      ```bash
-      make uninstall 
-      ```
+## Usage
 
-Limpiar los archivos generados por la compilación: 
-      ```bash
-      make clean  
-      ```
-## Statusbar para dwm
-
-Este proyecto proporciona un statusbar personalizado diseñado para funcionar con el gestor de ventanas [dwm](https://dwm.suckless.org/). La statusbar muestra información relevante, como la hora actual, directamente en tu barra de estado de dwm.
-
-Con estos pasos, podrá compilar, instalar y desinstalar el proyecto fácilmente utilizando el Makefile proporcionado.
-
-### Requisitos
-
-   - [dwm](https://dwm.suckless.org/): Asegúrese de tener dwm instalado en su sistema antes de utilizar este statusbar.
-
+```sh
+make build      # compile
+make install    # install to /usr/local/bin
+make uninstall  # remove
+make clean      # clean build files
+```
