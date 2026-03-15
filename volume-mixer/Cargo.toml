@@ -1,0 +1,12 @@
+[package]
+name    = "volume-mixer"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "volume-mixer"
+path = "src/main.rs"
+
+[dependencies]
+gtk  = { version = "0.7", package = "gtk4", features = ["v4_6"] }
+pulsectl-rs = "0.3"
