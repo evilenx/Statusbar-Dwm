@@ -8,4 +8,7 @@ authors = ["Emanuel Aviles - Statusbar - inspiration GamozoLabs"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-chrono = "*"
+ sysinfo = "0.23"  # Check for the latest version on crates.io
+#sysinfo = "0.30"  # Check for the latest version on crates.io
+chrono = "0.4"
+
